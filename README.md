@@ -68,4 +68,5 @@ Cada funcionalidad a implementar se desarrollará en una **rama individual**. Ca
 | Nombre completo            | Usuario GitHub        |
 | -------------------------- | --------------------- |
 | Matias Gabriel Ortega      | `@MatiasGOrtega`      |
+| Victor Fernando Balcazar   | `@vfbalcazar08`       |
 | ❌Salim Farid Quintar        | No sigue con la cursada|
