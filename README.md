@@ -65,8 +65,10 @@ Cada funcionalidad a implementar se desarrollará en una **rama individual**. Ca
 
 ## 👥 Integrantes
 
-| Nombre completo            | Usuario GitHub        |
-| -------------------------- | --------------------- |
-| Matias Gabriel Ortega      | `@MatiasGOrtega`      |
-| Victor Fernando Balcazar   | `@vfbalcazar08`       |
-| ❌Salim Farid Quintar        | No sigue con la cursada|
+| Nombre completo              | Usuario GitHub        |
+| --------------------------   | --------------------- |
+| Matias Gabriel Ortega        | `@MatiasGOrtega`      |
+| Victor Fernando Balcazar     | `@vfbalcazar08`       |
+| Rodrigo Alexis Guanactolay   | `@GuanactolayRodrigo` | 
+
+| ❌Salim Farid Quintar       | No sigue con la cursada|
