@@ -1,30 +1,36 @@
-import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-
+import { Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 const ListStudent = () => {
-  
-  const [alumnos, setAlumnos] = useState([{id:"", nombre:"", edad: ""}])
 
-  const eliminarAlumno = (id) => {
+  const navigate = useNavigate()
+  const [alumnos, setAlumnos] = useState([])
+  
+  const eliminarAlumno = (lu) => {
     if (confirm('¿Está seguro de eliminar este alumno?')) {
-      setAlumnos(alumnos.filter(alumno => alumno.id !== id))
+      setAlumnos(alumnos.filter(alumno => alumno.lu !== lu))
     }
   }
 
   return (
     <div>
-      <h2>Lista de Alumnos</h2>
+    <h2>Lista de Alumnos</h2>
+      {alumnos.length === 0 ? (
+        <p>No hay alumnos registrados.</p>
+      ) : (
       <ul>
         {alumnos.map(alumno => (
-          <li key={alumno.id}>
-            {alumno.nombre} ({alumno.edad} años)
-            <Link to={`/alumnos/${alumno.id}`}> Ver Detalles </Link>
-            <Link to={`/alumnos/${alumno.id}/editar`}> Editar </Link>
-            <button onClick={() => eliminarAlumno(alumno.id)}>Eliminar</button>
+          <li key={alumno.lu}>
+                <strong>LU:</strong> {alumno.lu} 
+                <strong>Nombre:</strong> {alumno.nombre} {alumno.apellido} 
+                <strong>Curso:</strong> {alumno.curso}
+                <button onClick={() => navigate(`/alumnos/${alumno.lu}/editar`)} >Editar</button>
+                <button onClick={() => eliminarAlumno(alumno.lu)} >Eliminar</button>
+                <Link to={`/alumnos/${alumno.lu}`} >Ver Detalles</Link>
           </li>
         ))}
       </ul>
+      )}  
     </div>
   )
 }
