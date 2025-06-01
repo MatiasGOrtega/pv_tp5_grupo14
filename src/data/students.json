@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "lu": "APU00100",
+    "nombre": "María Eugenia",
+    "apellido": "Diaz",
+    "curso": "Tercero",
+    "email": "mariadiaz@mail.com",
+    "domicilio": "Av. Congreso 125",
+    "teléfono": "3884895999"
+  },
+  {
+    "id": 2,
+    "lu": "APU00101",
+    "nombre": "Carlos",
+    "apellido": "Gómez",
+    "curso": "Primero",
+    "email": "carlosgomez@mail.com",
+    "domicilio": "Calle Florida 456",
+    "teléfono": "3885123456"
+  },
+  {
+    "id": 3,
+    "lu": "APU00102",
+    "nombre": "Lucía",
+    "apellido": "Fernández",
+    "curso": "Segundo",
+    "email": "luciafernandez@mail.com",
+    "domicilio": "Av. Libertador 789",
+    "teléfono": "3885987654"
+  },
+  {
+    "id": 4,
+    "lu": "APU00103",
+    "nombre": "Javier",
+    "apellido": "López",
+    "curso": "Tercero",
+    "email": "javierlopez@mail.com",
+    "domicilio": "Calle San Martín 321",
+    "teléfono": "3884765432"
+  },
+  {
+    "id": 5,
+    "lu": "APU00104",
+    "nombre": "Ana",
+    "apellido": "Martínez",
+    "curso": "Cuarto",
+    "email": "anamartinez@mail.com",
+    "domicilio": "Av. Belgrano 654",
+    "teléfono": "3885123789"
+  },
+  {
+    "id": 6,
+    "lu": "APU00105",
+    "nombre": "Pedro",
+    "apellido": "Rodríguez",
+    "curso": "Primero",
+    "email": "pedrorodriguez@mail.com",
+    "domicilio": "Calle Rivadavia 987",
+    "teléfono": "3885345678"
+  },
+  {
+    "id": 7,
+    "lu": "APU00106",
+    "nombre": "Sofía",
+    "apellido": "Pérez",
+    "curso": "Segundo",
+    "email": "sofiaperez@mail.com",
+    "domicilio": "Av. Corrientes 123",
+    "teléfono": "3885876543"
+  },
+  {
+    "id": 8,
+    "lu": "APU00107",
+    "nombre": "Miguel",
+    "apellido": "Sánchez",
+    "curso": "Tercero",
+    "email": "miguelsanchez@mail.com",
+    "domicilio": "Calle Sarmiento 456",
+    "teléfono": "3885234567"
+  },
+  {
+    "id": 9,
+    "lu": "APU00108",
+    "nombre": "Laura",
+    "apellido": "González",
+    "curso": "Cuarto",
+    "email": "lauragonzalez@mail.com",
+    "domicilio": "Av. Pueyrredón 789",
+    "teléfono": "3885765432"
+  },
+  {
+    "id": 10,
+    "lu": "APU00109",
+    "nombre": "Diego",
+    "apellido": "Torres",
+    "curso": "Primero",
+    "email": "diegotorres@mail.com",
+    "domicilio": "Calle Mitre 321",
+    "teléfono": "3885123456"
+  }
+]
