@@ -14,7 +14,7 @@ const ListStudent = () => {
 
   return (
     <div>
-       <h2>Lista de Alumnos</h2>
+      <h2>Lista de Alumnos</h2>
       <ul>
         {alumnos.map(alumno => (
           <li key={alumno.id}>
