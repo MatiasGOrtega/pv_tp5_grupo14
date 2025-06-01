@@ -14,7 +14,7 @@ const AddStudent = () => {
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    setProduct({
+    setStudent({
       lu: "",
       nombre: "",
       apellido: "",
