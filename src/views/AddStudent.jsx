@@ -11,6 +11,20 @@ const AddStudent = () => {
     domicilio: "",
     telefono: "",
   });
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    setProduct({
+      lu: "",
+      nombre: "",
+      apellido: "",
+      curso: "",
+      email: "",
+      domicilio: "",
+      telefono: "",
+    });
+  }
+
   return (
     <div>
     <form onSubmit={handleSubmit}>
