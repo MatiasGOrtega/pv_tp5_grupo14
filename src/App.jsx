@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router'
 import './App.css'
+import Navbar from './components/NavBar'  
 import Home from './views/Home'
 import ListStudents from './views/ListStudents'
 import AddStudent from './views/AddStudent'
@@ -10,8 +11,7 @@ import NotFound from './views/NotFound'
 function App() {
   return (
     <>
-      {/*<Navbar/>*/}
-
+      <Navbar />
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
