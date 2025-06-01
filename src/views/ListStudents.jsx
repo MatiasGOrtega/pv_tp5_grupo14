@@ -24,9 +24,9 @@ const ListStudent = () => {
                 <strong>LU:</strong> {alumno.lu} 
                 <strong>Nombre:</strong> {alumno.nombre} {alumno.apellido} 
                 <strong>Curso:</strong> {alumno.curso}
-                <button onClick={() => navigate(`/alumnos/${alumno.lu}/editar`)} >Editar</button>
+                <button onClick={() => navigate(`/students/${alumno.lu}/edit`)} >Editar</button>
                 <button onClick={() => eliminarAlumno(alumno.lu)} >Eliminar</button>
-                <Link to={`/alumnos/${alumno.lu}`} >Ver Detalles</Link>
+                <button onClick={() => navigate(`/students/${alumno.lu}`)} >Ver Detalles</button>
           </li>
         ))}
       </ul>
