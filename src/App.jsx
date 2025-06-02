@@ -7,6 +7,7 @@ import AddStudent from './views/AddStudent'
 import EditStudent from './views/EditStudent'
 import DetailStudent from './views/DetailStudent'
 import NotFound from './views/NotFound'
+import About from './views/About'
 
 function App() {
   return (
