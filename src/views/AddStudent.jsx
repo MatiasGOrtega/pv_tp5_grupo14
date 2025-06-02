@@ -1,10 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
+import ListStudents from './ListStudents';
 
-const AddStudent = (onAdd,onUpdate,editingStudent) => {
+const AddStudent = () => {
   const [student, setStudent] = useState({
-    id: "",
-    lu: "",
     nombre: "",
     apellido: "",
     curso: "",
@@ -13,52 +12,25 @@ const AddStudent = (onAdd,onUpdate,editingStudent) => {
     telefono: "",
   });
 
-  const [contadorId, setContadorId] = useState(1);
+  
+  const [students, setStudents] = useState([]);
 
-  useEffect(() => {
-    if (editingStudent) {
-      setStudent(editingStudent);
-    } else {
-      setStudent({
-        id: "",
-        lu: "",
-        nombre: "",
-        apellido: "",
-        curso: "",
-        email: "",
-        domicilio: "",
-        telefono: "",
-      });
-    }
-  }, [editingStudent]);
+  const [countLU, setCountLU] = useState(1);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setStudent((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault();
     const newStudent = {
-      ...student,
-      id: +student.id,
-      lu: +student.lu,
-      nombre: +student.nombre,
-      apellido: +student.apellido,
-      curso: +student.curso,
-      email: +student.email,      
-      domicilio: +student.domicilio,
-      telefono: +student.telefono,
+      lu: countLU,
+      ...student
     };
-    if (editingStudent) {
-      onUpdate(newStudent);
-    } else {
-      newStudent.id = contadorId;
-      setContadorId((prev) => prev + 1);
-      onAdd(newStudent);
-    }
-    setStudent({
-      lu: "",
+    setStudents((prev) => [...prev, newStudent]);
+    setCountLU((prev) => prev + 1);
+     setStudent({
       nombre: "",
       apellido: "",
       curso: "",
@@ -66,18 +38,13 @@ const AddStudent = (onAdd,onUpdate,editingStudent) => {
       domicilio: "",
       telefono: "",
     });
-  }
+
+    
+  };
 
   return (
     <div>
     <form onSubmit={handleSubmit}>
-      <input
-        name="lu"
-        placeholder="LU"
-        value={student.lu}
-        onChange={handleChange}
-        required
-      />
       <input
         name="nombre"
         placeholder="Nombre"
@@ -120,9 +87,10 @@ const AddStudent = (onAdd,onUpdate,editingStudent) => {
         onChange={handleChange}
         required
       />
-      <button type="submit">{editingProduct ? "Actualizar" : "Agregar"}Agregar
+      <button type="submit">Agregar
       </button>
     </form>
+    <ListStudents students={students} />
     </div>
   );
 };
