@@ -1,9 +1,11 @@
 import React from 'react'
-import { useState } from 'react'
-import ListStudents from './ListStudents';
+import { useState,useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDatos } from './DatosContext';
 
 const AddStudent = () => {
   const [student, setStudent] = useState({
+    lu: "",
     nombre: "",
     apellido: "",
     curso: "",
@@ -12,11 +14,31 @@ const AddStudent = () => {
     telefono: "",
   });
 
+  const { datos,agregarDato,obtenerEstudianteID,editarAlumno } = useDatos();
+
+  const navigate = useNavigate();
+  const {id} = useParams();
+
+  const modoEdicion = Boolean(id);
+
+  useEffect(()=>{
+    if (modoEdicion){
+      const estudianteExistente = obtenerEstudianteID(id);
+      if (!estudianteExistente && datos.length>0){
+        navigate('/students/add');
+      }
+      else if(estudianteExistente){
+        
+        setAlumno(estudianteExistente);
+        
+        
+      }
+      
+    }
+  },[id,modoEdicion,navigate,obtenerEstudianteID,datos]);
+
   
-  const [students, setStudents] = useState([]);
-
-  const [countLU, setCountLU] = useState(1);
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setStudent((prev) => ({ ...prev, [name]: value }));
@@ -24,27 +46,28 @@ const AddStudent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newStudent = {
-      lu: countLU,
-      ...student
-    };
-    setStudents((prev) => [...prev, newStudent]);
-    setCountLU((prev) => prev + 1);
-     setStudent({
-      nombre: "",
-      apellido: "",
-      curso: "",
-      email: "",
-      domicilio: "",
-      telefono: "",
-    });
-
+    if (modoEdicion){
+      editarAlumno(id,alumno);
+    }
+    else{
+      agregarDato(alumno);
+    }
+    navigate("/students");
     
   };
 
   return (
     <div>
-    <form onSubmit={handleSubmit}>
+      <h1 >{modoEdicion? "Editar Estudiante":"Agregar Estudiante"}</h1>
+      <form onSubmit={handleSubmit}>
+      <input
+        name="lu"
+        placeholder="LU"
+        value={student.lu}
+        onChange={handleChange}
+        required
+        disabled={modoEdicion}
+      />
       <input
         name="nombre"
         placeholder="Nombre"
@@ -87,11 +110,11 @@ const AddStudent = () => {
         onChange={handleChange}
         required
       />
-      <button type="submit">Agregar
+      <button type="submit">
+        {modoEdicion? "Editar":"Agregar"}
       </button>
     </form>
-    <ListStudents students={students} />
-    </div>
+  </div>
   );
 };
 
