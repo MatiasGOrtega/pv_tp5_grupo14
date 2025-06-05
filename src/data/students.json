@@ -7,7 +7,7 @@
     "curso": "Tercero",
     "email": "mariadiaz@mail.com",
     "domicilio": "Av. Congreso 125",
-    "teléfono": "3884895999"
+    "telefono": "3884895999"
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@
     "curso": "Primero",
     "email": "carlosgomez@mail.com",
     "domicilio": "Calle Florida 456",
-    "teléfono": "3885123456"
+    "telefono": "3885123456"
   },
   {
     "id": 3,
@@ -27,7 +27,7 @@
     "curso": "Segundo",
     "email": "luciafernandez@mail.com",
     "domicilio": "Av. Libertador 789",
-    "teléfono": "3885987654"
+    "telefono": "3885987654"
   },
   {
     "id": 4,
@@ -37,7 +37,7 @@
     "curso": "Tercero",
     "email": "javierlopez@mail.com",
     "domicilio": "Calle San Martín 321",
-    "teléfono": "3884765432"
+    "telefono": "3884765432"
   },
   {
     "id": 5,
@@ -47,7 +47,7 @@
     "curso": "Cuarto",
     "email": "anamartinez@mail.com",
     "domicilio": "Av. Belgrano 654",
-    "teléfono": "3885123789"
+    "telefono": "3885123789"
   },
   {
     "id": 6,
@@ -57,7 +57,7 @@
     "curso": "Primero",
     "email": "pedrorodriguez@mail.com",
     "domicilio": "Calle Rivadavia 987",
-    "teléfono": "3885345678"
+    "telefono": "3885345678"
   },
   {
     "id": 7,
@@ -67,7 +67,7 @@
     "curso": "Segundo",
     "email": "sofiaperez@mail.com",
     "domicilio": "Av. Corrientes 123",
-    "teléfono": "3885876543"
+    "telefono": "3885876543"
   },
   {
     "id": 8,
@@ -77,7 +77,7 @@
     "curso": "Tercero",
     "email": "miguelsanchez@mail.com",
     "domicilio": "Calle Sarmiento 456",
-    "teléfono": "3885234567"
+    "telefono": "3885234567"
   },
   {
     "id": 9,
@@ -87,7 +87,7 @@
     "curso": "Cuarto",
     "email": "lauragonzalez@mail.com",
     "domicilio": "Av. Pueyrredón 789",
-    "teléfono": "3885765432"
+    "telefono": "3885765432"
   },
   {
     "id": 10,
@@ -97,6 +97,6 @@
     "curso": "Primero",
     "email": "diegotorres@mail.com",
     "domicilio": "Calle Mitre 321",
-    "teléfono": "3885123456"
+    "telefono": "3885123456"
   }
 ]
