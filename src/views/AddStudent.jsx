@@ -1,9 +1,10 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDatos } from '../context/DatosContext';
 
-const AddStudent = (onAdd,onUpdate,editingStudent) => {
+const AddStudent = () => {
   const [student, setStudent] = useState({
-    id: "",
     lu: "",
     nombre: "",
     apellido: "",
@@ -13,70 +14,59 @@ const AddStudent = (onAdd,onUpdate,editingStudent) => {
     telefono: "",
   });
 
-  const [contadorId, setContadorId] = useState(1);
+  const { datos,agregarDato,obtenerEstudianteID,editarAlumno } = useDatos();
 
-  useEffect(() => {
-    if (editingStudent) {
-      setStudent(editingStudent);
-    } else {
-      setStudent({
-        id: "",
-        lu: "",
-        nombre: "",
-        apellido: "",
-        curso: "",
-        email: "",
-        domicilio: "",
-        telefono: "",
-      });
+  const navigate = useNavigate();
+  const {id} = useParams();
+
+  const modoEdicion = Boolean(id);
+
+  useEffect(()=>{
+    if (modoEdicion){
+      const estudianteExistente = obtenerEstudianteID(id);
+      if (!estudianteExistente && datos.length>0){
+        navigate('/students/add');
+      }
+      else if(estudianteExistente){
+        
+        setAlumno(estudianteExistente);
+        
+        
+      }
+      
     }
-  }, [editingStudent]);
+  },[id,modoEdicion,navigate,obtenerEstudianteID,datos]);
 
+  
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setStudent((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const newStudent = {
-      ...student,
-      id: +student.id,
-      lu: +student.lu,
-      nombre: +student.nombre,
-      apellido: +student.apellido,
-      curso: +student.curso,
-      email: +student.email,      
-      domicilio: +student.domicilio,
-      telefono: +student.telefono,
-    };
-    if (editingStudent) {
-      onUpdate(newStudent);
-    } else {
-      newStudent.id = contadorId;
-      setContadorId((prev) => prev + 1);
-      onAdd(newStudent);
+    if (modoEdicion){
+      editarAlumno(id,alumno);
     }
-    setStudent({
-      lu: "",
-      nombre: "",
-      apellido: "",
-      curso: "",
-      email: "",
-      domicilio: "",
-      telefono: "",
-    });
-  }
+    else{
+      agregarDato(alumno);
+    }
+    navigate("/students");
+    
+  };
 
   return (
     <div>
-    <form onSubmit={handleSubmit}>
+      <h1 >{modoEdicion? "Editar Estudiante":"Agregar Estudiante"}</h1>
+      <form onSubmit={handleSubmit}>
       <input
         name="lu"
         placeholder="LU"
         value={student.lu}
         onChange={handleChange}
         required
+        disabled={modoEdicion}
       />
       <input
         name="nombre"
@@ -120,10 +110,11 @@ const AddStudent = (onAdd,onUpdate,editingStudent) => {
         onChange={handleChange}
         required
       />
-      <button type="submit">{editingProduct ? "Actualizar" : "Agregar"}Agregar
+      <button type="submit">
+        {modoEdicion? "Editar":"Agregar"}
       </button>
     </form>
-    </div>
+  </div>
   );
 };
 
