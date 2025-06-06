@@ -12,6 +12,7 @@ const FormInput = memo(({ label, name, value, onChange, type = 'text', disabled 
         onChange={onChange}
         disabled={disabled}
         required={required}
+        placeholder={label}
       />
     </Box>
   );
