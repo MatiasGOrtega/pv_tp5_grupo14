@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "lu": "APU00100",
     "nombre": "María Eugenia",
     "apellido": "Diaz",
@@ -10,7 +10,7 @@
     "telefono": "3884895999"
   },
   {
-    "id": 2,
+    "id": "2",
     "lu": "APU00101",
     "nombre": "Carlos",
     "apellido": "Gómez",
@@ -20,7 +20,7 @@
     "telefono": "3885123456"
   },
   {
-    "id": 3,
+    "id": "3",
     "lu": "APU00102",
     "nombre": "Lucía",
     "apellido": "Fernández",
@@ -30,7 +30,7 @@
     "telefono": "3885987654"
   },
   {
-    "id": 4,
+    "id": "4",
     "lu": "APU00103",
     "nombre": "Javier",
     "apellido": "López",
@@ -40,7 +40,7 @@
     "telefono": "3884765432"
   },
   {
-    "id": 5,
+    "id": "5",
     "lu": "APU00104",
     "nombre": "Ana",
     "apellido": "Martínez",
@@ -50,7 +50,7 @@
     "telefono": "3885123789"
   },
   {
-    "id": 6,
+    "id": "6",
     "lu": "APU00105",
     "nombre": "Pedro",
     "apellido": "Rodríguez",
@@ -60,7 +60,7 @@
     "telefono": "3885345678"
   },
   {
-    "id": 7,
+    "id": "7",
     "lu": "APU00106",
     "nombre": "Sofía",
     "apellido": "Pérez",
@@ -70,7 +70,7 @@
     "telefono": "3885876543"
   },
   {
-    "id": 8,
+    "id": "8",
     "lu": "APU00107",
     "nombre": "Miguel",
     "apellido": "Sánchez",
@@ -80,7 +80,7 @@
     "telefono": "3885234567"
   },
   {
-    "id": 9,
+    "id": "9",
     "lu": "APU00108",
     "nombre": "Laura",
     "apellido": "González",
@@ -90,7 +90,7 @@
     "telefono": "3885765432"
   },
   {
-    "id": 10,
+    "id": "10",
     "lu": "APU00109",
     "nombre": "Diego",
     "apellido": "Torres",

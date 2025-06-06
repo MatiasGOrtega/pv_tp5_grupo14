@@ -1,33 +1,49 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import studentsData from '../data/students.json';
 
-const DatosContext = createContext();
+const StudentContext = createContext();
 
-export function DatosProvider({ children }) {
-  const [datos, setDatos] = useState([]);
+export const StudentProvider = ({ children }) => {
+  const [students, setStudents] = useState(studentsData);
 
-  const agregarDato = (nuevoDato) => {
-    setDatos((prev) => [...prev, { id: Date.now(), ...nuevoDato }]);
-  };
+  const addStudent = useCallback((newStudent) => {
+    setStudents([...students, newStudent]);
+  }, [students]);
 
-  const obtenerEstudianteID = (id) =>{
-    return datos.find(dato => dato.id === parseInt(id));
+  const editStudent = useCallback((id, updatedStudent) => {
+    setStudents(students.map(student =>
+      student.id === id ? { ...updatedStudent, id } : student
+    ));
+  }, [students]);
 
-  };
+  const deleteStudent = useCallback((id) => {
+    setStudents(students.filter(student => student.id !== id));
+  }, [students]);
 
-  const editarAlumno = (id,alumno)=>{
-    setDatos(datos.map(dato => dato.id === parseInt(id)? {...alumno , id}:dato))
-  }
+  const getStudentById = useCallback((id) => {
+    return students.find(student => student.id === id);
+  }, [students]);
 
   return (
-    <DatosContext.Provider value={{ datos, agregarDato,obtenerEstudianteID,editarAlumno }}>
+    <StudentContext.Provider
+      value={useMemo(() => ({
+        students,
+        addStudent,
+        editStudent,
+        deleteStudent,
+        getStudentById
+      }
+      ), [students, addStudent, editStudent, deleteStudent, getStudentById])}
+    >
       {children}
-    </DatosContext.Provider>
+    </StudentContext.Provider>
   );
-}
+};
 
-export const useDatos = () => {
-  const context = useContext(DatosContext)
-  if(!context) {
-    throw new Error('useDatos error');
+export const useStudents = () => {
+  const context = useContext(StudentContext);
+  if (!context) {
+    throw new Error('useStudents debe usarse dentro de un StudentProvider');
   }
-  return context};
+  return context;
+};

@@ -1,34 +1,43 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import students from '../data/students.json';
 import FormInput from '../components/FormInput';
+import { useStudents } from '../context/DatosContext';
+
+const defaultStudent = {
+  lu: "",
+  nombre: "",
+  apellido: "",
+  curso: "",
+  email: "",
+  domicilio: "",
+  telefono: "",
+};
 
 const FormStudent = () => {
 
   const { id } = useParams();
   const navigate = useNavigate();
+  const {
+    getStudentById,
+    addStudent,
+    editStudent
+  } = useStudents();
   const isEditMode = Boolean(id);
 
-  const [student, setStudent] = useState({
-    lu: "",
-    nombre: "",
-    apellido: "",
-    curso: "",
-    email: "",
-    domicilio: "",
-    telefono: "",
-  });
+  const [student, setStudent] = useState(defaultStudent);
 
   useEffect(() => {
     if (isEditMode) {
-      const existingStudent = students.find(s => s.id === id);
+      const existingStudent = getStudentById(id);
       if (existingStudent) {
         setStudent(existingStudent);
       } else {
-        navigate('/student/add');
+        navigate('/students/add', { replace: true });
       }
+    } else {
+      setStudent(defaultStudent);
     }
-  }, [id, isEditMode, navigate]);
+  }, [id, isEditMode, navigate, getStudentById]);
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;
@@ -42,11 +51,15 @@ const FormStudent = () => {
     e.preventDefault();
 
     if (isEditMode) {
-      console.log("Editando estudiante:", student);
       alert(`Estudiante ${student.nombre} ${student.apellido} actualizado`);
+      editStudent(id, student);
     } else {
       console.log("Añadiendo estudiante:", student);
       alert(`Estudiante ${student.nombre} ${student.apellido} añadido`);
+      addStudent({
+        ...student,
+        id: String(Date.now())
+      });
     }
 
     navigate('/students');
@@ -107,7 +120,6 @@ const FormStudent = () => {
         <button
           type="button"
           onClick={() => navigate('/students')}
-          style={{ marginLeft: '10px' }}
         >
           Cancelar
         </button>
