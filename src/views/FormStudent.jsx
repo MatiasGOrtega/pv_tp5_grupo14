@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import FormInput from '../components/FormInput';
 import { useStudents } from '../context/DatosContext';
-
+import { Button, Flex, Text, Card } from '@radix-ui/themes';
 const defaultStudent = {
   lu: "",
   nombre: "",
@@ -66,8 +66,13 @@ const FormStudent = () => {
   };
 
   return (
-    <div>
-      <h2>{isEditMode ? 'Editar Estudiante' : 'Añadir Estudiante'}</h2>
+    <Flex align="center" direction="column">
+    <Card size="5" my="5" px="5" py="4" style={{ maxWidth: 400, width: '100%' }}>
+      <Flex justify="center"  mb="3">
+       <Text size="6" weight="bold" >
+        {isEditMode ? 'Editar Estudiante' : 'Añadir Estudiante'}
+       </Text>
+      </Flex>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="LU"
@@ -114,17 +119,20 @@ const FormStudent = () => {
           onChange={handleChange}
           type="tel"
         />
-        <button type="submit">
+        <Flex gap="5" mt="5" align="center" justify="between">
+        <Button type="submit">
           {isEditMode ? 'Guardar Cambios' : 'Agregar Estudiante'}
-        </button>
-        <button
+        </Button>
+        <Button variant='ghost'
           type="button"
           onClick={() => navigate('/students')}
         >
           Cancelar
-        </button>
+        </Button>
+        </Flex>
       </form>
-    </div>
+    </Card>
+    </Flex>
   );
 }
 
