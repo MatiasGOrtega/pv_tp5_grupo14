@@ -1,9 +1,11 @@
 import { memo } from 'react';
+import { Box, TextField } from '@radix-ui/themes';
 const FormInput = memo(({ label, name, value, onChange, type = 'text', disabled = false, required = true }) => {
   return (
-    <div>
-      <label>{label}</label>
-      <input
+    <Box mb="2">
+      <label htmlFor={name}>{label}</label>
+      <TextField.Root
+        id={name}
         name={name}
         type={type}
         value={value}
@@ -11,7 +13,7 @@ const FormInput = memo(({ label, name, value, onChange, type = 'text', disabled 
         disabled={disabled}
         required={required}
       />
-    </div>
+    </Box>
   );
 });
 
