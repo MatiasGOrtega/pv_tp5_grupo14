@@ -1,36 +1,27 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useStudents } from '../context/DatosContext'
 
 const ListStudent = () => {
 
-  const navigate = useNavigate()
-  const [alumnos, setAlumnos] = useState([])
-  
-  const eliminarAlumno = (lu) => {
-    if (confirm('¿Está seguro de eliminar este alumno?')) {
-      setAlumnos(alumnos.filter(alumno => alumno.lu !== lu))
-    }
-  }
+  const { students } = useStudents()
 
   return (
     <div>
-    <h2>Lista de Alumnos</h2>
-      {alumnos.length === 0 ? (
+      <h2>Lista de Alumnos</h2>
+      {students.length === 0 ? (
         <p>No hay alumnos registrados.</p>
       ) : (
-      <ul>
-        {alumnos.map(alumno => (
-          <li key={alumno.lu}>
-                <strong>LU:</strong> {alumno.lu} 
-                <strong>Nombre:</strong> {alumno.nombre} {alumno.apellido} 
-                <strong>Curso:</strong> {alumno.curso}
-                <button onClick={() => navigate(`/students/${alumno.lu}/edit`)} >Editar</button>
-                <button onClick={() => eliminarAlumno(alumno.lu)} >Eliminar</button>
-                <button onClick={() => navigate(`/students/${alumno.lu}`)} >Ver Detalles</button>
-          </li>
-        ))}
-      </ul>
-      )}  
+        <ul>
+          {students.map(student => (
+            <li key={student.lu}>
+              <strong>LU:</strong> {student.lu}
+              <strong>Nombre:</strong> {student.nombre} {student.apellido}
+              <strong>Curso:</strong> {student.curso}
+              <Link to={`/students/${student.id}`}>Ver Detalles</Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }

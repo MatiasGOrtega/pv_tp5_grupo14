@@ -1,12 +1,25 @@
-import { Link } from 'react-router-dom'
+import { memo } from 'react';
+import { NavLink } from 'react-router-dom'
 
-const NavBar = () => (
-    <nav>
-        <Link to="/">Inicio</Link>
-        <Link to="/students">Lista de Alumnos</Link>
-        <Link to="/students/add">Nuevo Alumno</Link>
-        <Link to="/about">Acerca de</Link>
-    </nav>
-);
+const NavBar = memo(() => {
+    return (
+        <nav>
+            <ul>
+                <li>
+                    <NavLink to="/" end>Inicio</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/students">Alumnos</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/students/add">Añadir Alumno</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/about">Acerca de</NavLink>
+                </li>
+            </ul>
+        </nav>
+    );
+});
 
 export default NavBar;
