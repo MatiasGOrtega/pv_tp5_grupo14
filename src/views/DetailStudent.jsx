@@ -1,39 +1,105 @@
-import { Link, useParams } from 'react-router'
+import { Link, useNavigate, useParams } from 'react-router'
 import { useStudents } from '../context/DatosContext';
-import { Button, Flex } from '@radix-ui/themes';
+import { Box, Button, Card, Flex, Text } from '@radix-ui/themes';
 
 const DetailStudent = () => {
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const { getStudentById, deleteStudent } = useStudents();
 
   const student = getStudentById(id);
 
-  if (!student) {
-    return <div>Estudiante no encontrado</div>;
-  }
+  const handleDelete = (studentId) => {
+    if (window.confirm("¿Estás seguro de que quieres eliminar este estudiante?")) {
+      deleteStudent(studentId);
+      navigate('/students');
+    }
+  };
 
-  return (
-    <div>
-      <h2>Detalles del Estudiante</h2>
-      <p><strong>LU:</strong> {student.lu}</p>
-      <p><strong>Nombre:</strong> {student.nombre}</p>
-      <p><strong>Apellido:</strong> {student.apellido}</p>
-      <p><strong>Curso:</strong> {student.curso}</p>
-      <p><strong>Email:</strong> {student.email}</p>
-      <p><strong>Teléfono:</strong> {student.telefono}</p>
-      <Flex gap="3">
-        <Button color="indigo" variant="soft">
-          <Link to={`/students/${student.id}/edit`}>Editar</Link>
-        </Button>
-        <Button color="crimson" variant="soft" onClick={() => deleteStudent(student.id)}>
-          Eliminar
-        </Button>
-        <Button color="cyan" variant="soft">
+  if (!student) {
+    return (
+      <Flex direction="column" align="center" gap="4" padding="4">
+        <Text as="h1" size="6" weight="bold">
+          Estudiante no encontrado
+        </Text>
+        <Button color="cyan" variant="soft" asChild>
           <Link to="/students">Volver a la lista</Link>
         </Button>
       </Flex>
-    </div>
+    )
+  }
+
+  return (
+    <Flex direction="column" align="center" gap="4" padding="4">
+      <Text as="h1" size="6" weight="bold">
+        Detalles del Estudiante
+      </Text>
+      <Box width="350px" marginBottom="4">
+        <Card>
+          <Flex gap="3" direction="column" padding="4">
+            <Box>
+              <Text as="p" size="3" weight="bold">
+                LU:
+              </Text>
+              <Text as="p" size="2">
+                {student.lu}
+              </Text>
+            </Box>
+            <Box>
+              <Text as="p" size="3" weight="bold">
+                Nombre:
+              </Text>
+              <Text as="p" size="2">
+                {student.nombre}
+              </Text>
+            </Box>
+            <Box>
+              <Text as="p" size="3" weight="bold">
+                Apellido:
+              </Text>
+              <Text as="p" size="2">
+                {student.apellido}
+              </Text>
+            </Box>
+            <Box>
+              <Text as="p" size="3" weight="bold">
+                Curso:
+              </Text>
+              <Text as="p" size="2">
+                {student.curso}
+              </Text>
+            </Box>
+            <Box>
+              <Text as="p" size="3" weight="bold">
+                Email:
+              </Text>
+              <Text as="p" size="2">
+                {student.email}
+              </Text>
+            </Box>
+            <Box>
+              <Text as="p" size="3" weight="bold">
+                Teléfono:
+              </Text>
+              <Text as="p" size="2">
+                {student.telefono}
+              </Text>
+            </Box>
+          </Flex>
+        </Card>
+      </Box>
+      <Flex gap="3">
+        <Button color="indigo" variant="soft" asChild>
+          <Link to={`/students/${student.id}/edit`}>Editar</Link>
+        </Button>
+        <Button style={{ "cursor": "pointer" }} color="crimson" variant="soft" onClick={() => handleDelete(student.id)}>
+          Eliminar
+        </Button>
+        <Button color="cyan" variant="soft" asChild>
+          <Link to="/students">Volver a la lista</Link>
+        </Button>
+      </Flex>
+    </Flex>
   )
 }
 
